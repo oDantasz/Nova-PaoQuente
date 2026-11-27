@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nova Pão Quente | Padaria no Assunção, São Bernardo do Campo</title>
+<meta name="description" content="Padaria Nova Pão Quente: pão na chapa, lanches, almoço, doces, pizza e chopp. Todos os dias, das 6h às 22h, na Av. João Firmino, 1251, Assunção, São Bernardo do Campo.">
+<meta name="theme-color" content="#3B2314">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://lh3.googleusercontent.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600..900,0..100,0..1;1,9..144,600..900,0..100,0..1&display=swap" rel="stylesheet">
+<style>
+  /* Identidade tirada do logo (medalhão dourado, fita, letras marrons) e da fachada */
+  :root{
+    --choco:#3B2314;
+    --choco-2:#5A3820;
+    --choco-3:#7A5236;
+    --ouro:#E3A41E;
+    --ouro-2:#F4C64E;
+    --ouro-claro:#FBE7A6;
+    --trigo:#FFF7E3;
+    --branco:#FFFFFF;
+    --tinta:#2B1A0E;
+    --cinza:#6E5A4B;
+    --linha:#EADFCB;
+    --verde:#4F8F3A;
+    --raio-m:16px;
+    --raio-l:28px;
+    --display:"Fraunces", Georgia, "Times New Roman", serif;
+    --texto:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --largura:1180px;
+    --metal:conic-gradient(from 210deg, #F8DC86, #D9951A, #F6CF63, #B97812, #F8DC86, #E2A62A, #F8DC86);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:var(--texto);font-size:17px;line-height:1.55;color:var(--tinta);background:var(--branco)}
+  img{display:block;max-width:100%}
+  svg{display:block}
+  a{color:inherit}
+  button,input,textarea{font:inherit;color:inherit}
+  button{cursor:pointer}
+  :focus-visible{outline:3px solid var(--ouro-2);outline-offset:3px;border-radius:6px}
+  .claro :focus-visible{outline-color:var(--choco-3)}
+  .wrap{max-width:var(--largura);margin:0 auto;padding:0 24px}
+  .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .disp{font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-style:italic}
+
+  /* fotos com fallback caso o Google não entregue a imagem */
+  .foto{display:block;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--ouro-2),var(--ouro) 60%,var(--choco-3))}
+  .foto img{width:100%;height:100%;object-fit:cover}
+  .foto.sem-foto img{display:none}
+  .credito{font-size:12.5px;color:var(--cinza);margin:8px 0 0}
+  .credito a{color:inherit}
+
+  /* ---------- topo ---------- */
+  .topo{position:sticky;top:0;z-index:40;background:var(--choco);color:var(--branco);border-bottom:1px solid rgba(255,255,255,.08)}
+  .topo .wrap{display:flex;align-items:center;gap:18px;height:72px}
+  .marca{display:flex;align-items:center;gap:12px;text-decoration:none;white-space:nowrap}
+  .selo-logo{display:block;width:48px;height:48px;border-radius:50%;padding:3px;background:var(--metal);flex:none}
+  .selo-logo .foto{width:100%;height:100%;border-radius:50%;background:var(--ouro)}
+  .marca-txt{display:flex;flex-direction:column;line-height:1}
+  .marca-txt small{font-family:var(--display);font-style:italic;font-weight:600;font-size:15px;color:var(--ouro-2);margin-bottom:1px;font-variation-settings:"SOFT" 100,"WONK" 1}
+  .marca-txt b{font-family:var(--display);font-style:italic;font-weight:900;font-size:24px;letter-spacing:-.01em;font-variation-settings:"SOFT" 100,"WONK" 1}
+  .topo nav{display:flex;gap:2px;margin-left:auto}
+  .topo nav a{text-decoration:none;padding:8px 12px;border-radius:999px;font-weight:600;font-size:15px;color:rgba(255,255,255,.86)}
+  .topo nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .status{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;padding:6px 12px 6px 10px;border-radius:999px;background:rgba(255,255,255,.08);white-space:nowrap}
+  .status i{width:9px;height:9px;border-radius:50%;background:#5FD07E;animation:pulso 2.2s infinite}
+  .status .curto{display:none}
+  .status.fechado i{background:#FF9A85;animation:none}
+  @keyframes pulso{0%{box-shadow:0 0 0 0 rgba(95,208,126,.6)}70%{box-shadow:0 0 0 9px rgba(95,208,126,0)}100%{box-shadow:0 0 0 0 rgba(95,208,126,0)}}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;font-weight:800;font-size:16px;text-decoration:none;line-height:1.1;transition:transform .15s ease, background-color .15s ease}
+  .btn:active{transform:scale(.97)}
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-ouro{background:var(--ouro-2);color:var(--choco)}
+  .btn-ouro:hover{background:#FFD76E}
+  .btn-choco{background:var(--choco);color:var(--branco)}
+  .btn-choco:hover{background:var(--choco-2)}
+  .btn-contorno{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px currentColor}
+  .btn-contorno:hover{background:rgba(59,35,20,.06)}
+  .topo .btn{padding:10px 16px;font-size:15px}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--choco);color:var(--branco);position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:auto -10% -40% auto;width:70vw;max-width:900px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle, rgba(244,198,78,.16), rgba(244,198,78,0) 65%);pointer-events:none}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;padding-top:52px;padding-bottom:48px}
+  .hero-texto{min-height:340px;display:flex;flex-direction:column;justify-content:center}
+  .quando{font-size:17px;font-weight:700;color:var(--ouro-2);margin:0 0 10px}
+  .hero h1{font-family:var(--display);font-style:italic;font-weight:900;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 144;font-size:clamp(46px,6.6vw,90px);line-height:.98;letter-spacing:-.02em;margin:0 0 20px;max-width:11ch}
+  .hero p.sub{font-size:20px;line-height:1.45;max-width:32ch;margin:0 0 28px;color:rgba(255,255,255,.84)}
+  .hero-acoes{display:flex;flex-wrap:wrap;gap:12px}
+  .hero-acoes .btn-contorno{color:var(--branco)}
+  .hero-acoes .btn-contorno:hover{background:rgba(255,255,255,.08)}
+  .troca{transition:opacity .28s ease, transform .28s ease}
+  .troca.saindo{opacity:0;transform:translateY(6px)}
+
+  /* medalhão: ecoa o selo dourado do logo */
+  .medalha-box{justify-self:center;width:100%;max-width:470px}
+  .medalha{position:relative;aspect-ratio:1;border-radius:50%;padding:14px;background:var(--metal);box-shadow:0 30px 60px -20px rgba(0,0,0,.6), inset 0 0 0 2px rgba(255,255,255,.35)}
+  .medalha .aro{position:absolute;inset:14px;border-radius:50%;box-shadow:inset 0 0 0 3px rgba(91,52,10,.35);pointer-events:none;z-index:3}
+  .medalha .fotos{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--choco-2)}
+  .medalha .foto{position:absolute;inset:0;opacity:0;transform:scale(1.06);transition:opacity .6s ease, transform 1.2s ease}
+  .medalha .foto.ativa{opacity:1;transform:none}
+  .fita{position:absolute;left:-7%;right:-7%;bottom:9%;z-index:4;filter:drop-shadow(0 8px 10px rgba(0,0,0,.35))}
+  .fita svg{width:100%;height:auto;overflow:visible}
+  .fita text{font-family:var(--display);font-style:italic;font-weight:900;font-variation-settings:"SOFT" 100,"WONK" 1;fill:var(--choco)}
+  .medalha-box .credito{text-align:center;color:rgba(255,255,255,.6);margin-top:14px}
+
+  .regua{grid-column:1/-1;background:rgba(255,255,255,.06);border:1px solid rgba(244,198,78,.18);border-radius:var(--raio-l);padding:22px 26px 18px;margin-top:6px}
+  .regua-topo{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+  .regua-topo h2{font-size:18px;font-weight:700;margin:0}
+  .regua-topo h2 span{color:rgba(255,255,255,.65);font-weight:500}
+  .agora-btn{background:none;border:0;color:var(--ouro-2);font-weight:700;font-size:15px;padding:4px 0;text-decoration:underline;text-underline-offset:3px}
+  .faixa{position:relative;height:56px}
+  .faixa .zonas{position:absolute;left:0;right:0;top:14px;height:28px;display:flex;border-radius:999px;overflow:hidden}
+  .faixa .zonas span{display:flex;align-items:center;padding-left:12px;font-size:13px;font-weight:800;color:var(--choco)}
+  .z-manha{flex:6;background:var(--ouro-claro)}
+  .z-tarde{flex:6;background:var(--ouro-2)}
+  .z-noite{flex:4;background:var(--choco-3);color:var(--ouro-claro)!important}
+  .faixa .marca-agora{position:absolute;top:4px;width:2px;height:48px;background:var(--branco);transform:translateX(-1px);pointer-events:none}
+  .faixa .marca-agora::after{content:"agora";position:absolute;top:-3px;left:6px;font-size:11px;font-weight:800;color:var(--branco)}
+  .faixa input[type=range]{position:absolute;inset:0;width:100%;height:56px;margin:0;background:transparent;-webkit-appearance:none;appearance:none}
+  .faixa input[type=range]::-webkit-slider-runnable-track{height:56px;background:transparent}
+  .faixa input[type=range]::-moz-range-track{height:56px;background:transparent}
+  .faixa input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:34px;height:34px;margin-top:11px;border-radius:50%;background:var(--metal);border:4px solid var(--branco);box-shadow:0 4px 14px rgba(0,0,0,.4);cursor:grab}
+  .faixa input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--ouro);border:4px solid var(--branco);box-shadow:0 4px 14px rgba(0,0,0,.4);cursor:grab}
+  .faixa input[type=range]:focus-visible{outline:none}
+  .faixa input[type=range]:focus-visible::-webkit-slider-thumb{outline:3px solid var(--ouro-2);outline-offset:2px}
+  .horas{display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6);margin-top:4px;padding:0 2px}
+  .sugestoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+  .sugestoes > span{font-size:15px;color:rgba(255,255,255,.75);margin-right:4px}
+  .chip-add{display:inline-flex;align-items:center;gap:8px;background:var(--branco);color:var(--tinta);border:0;border-radius:999px;padding:8px 14px 8px 16px;font-weight:700;font-size:15px}
+  .chip-add b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ouro-2);font-size:16px;line-height:1}
+  .chip-add:hover{background:var(--ouro-claro)}
+
+  /* ---------- seções ---------- */
+  section{scroll-margin-top:84px}
+  .bloco{padding:92px 0}
+  .titulo-sec{font-family:var(--display);font-style:italic;font-weight:900;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 120;font-size:clamp(36px,4.6vw,58px);line-height:1;letter-spacing:-.015em;margin:0 0 14px;color:var(--choco)}
+  .intro{font-size:19px;color:var(--cinza);max-width:56ch;margin:0 0 36px}
+
+  /* a casa */
+  .casa .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .casa-fotos{position:relative;padding-bottom:70px}
+  .casa-fotos .f1{aspect-ratio:4/3;border-radius:var(--raio-l)}
+  .casa-fotos .f2{position:absolute;right:-18px;bottom:0;width:52%;aspect-ratio:16/10;border-radius:var(--raio-m);border:6px solid var(--branco);box-shadow:0 20px 40px -18px rgba(59,35,20,.5)}
+  .casa-fotos .credito{max-width:44%}
+  .fatos{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
+  .fatos li{display:flex;gap:14px;align-items:flex-start;font-size:17px}
+  .fatos svg{width:26px;height:26px;flex:none;color:var(--ouro);margin-top:1px}
+  .fatos b{display:block;color:var(--choco)}
+
+  /* cardápio */
+  .cardapio{background:var(--trigo)}
+  .cardapio-ctrl{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:26px}
+  .abas{display:flex;gap:6px;flex-wrap:wrap;flex:1 1 640px}
+  .aba{border:0;background:transparent;border-radius:999px;padding:9px 15px;font-weight:700;font-size:15.5px;color:var(--cinza);box-shadow:inset 0 0 0 1.5px var(--linha)}
+  .aba:hover{color:var(--tinta);box-shadow:inset 0 0 0 1.5px #D6C6A8}
+  .aba[aria-selected="true"]{background:var(--choco);color:var(--branco);box-shadow:none}
+  .busca{position:relative;flex:0 1 290px}
+  .busca input{width:100%;border:1.5px solid var(--linha);background:var(--branco);border-radius:999px;padding:11px 16px 11px 42px;font-size:16px}
+  .busca input:focus{outline:none;border-color:var(--choco-3)}
+  .busca svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--cinza)}
+  .lista{display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
+  .item{display:grid;grid-template-columns:auto 1fr auto;gap:2px 16px;align-items:center;padding:16px 0;border-bottom:1px dashed #D9C9A9}
+  .item .thumb{display:block;grid-row:1/3;width:64px;height:64px;border-radius:50%;padding:3px;background:var(--metal)}
+  .item .thumb .foto{width:100%;height:100%;border-radius:50%}
+  .item .sem-thumb{grid-row:1/3;width:0}
+  .item h3{margin:0;font-size:19px;font-weight:800;letter-spacing:-.005em;display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--choco)}
+  .item p{margin:0;grid-column:2;color:var(--cinza);font-size:15.5px;line-height:1.45}
+  .item .ctrl{grid-row:1/3;grid-column:3}
+  .selo{font-size:12px;font-weight:800;background:var(--ouro-2);color:var(--choco);border-radius:999px;padding:3px 9px}
+  .add{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:0;background:var(--choco);color:var(--branco);font-size:24px;line-height:1;transition:transform .15s ease}
+  .add:hover{background:var(--choco-2)}
+  .add:active{transform:scale(.9)}
+  .qtd{display:inline-flex;align-items:center;background:var(--ouro-claro);border-radius:999px;padding:3px}
+  .qtd button{width:38px;height:38px;border-radius:50%;border:0;background:var(--branco);font-size:20px;font-weight:800;line-height:1}
+  .qtd button:hover{background:var(--ouro-2)}
+  .qtd output{min-width:32px;text-align:center;font-weight:800}
+  .vazio{grid-column:1/-1;padding:40px 0;color:var(--cinza);font-size:18px}
+  .nota-card{margin-top:22px;font-size:14px;color:var(--cinza)}
+
+  /* monte seu café */
+  .monte{background:var(--ouro-2)}
+  .monte .titulo-sec{color:var(--choco)}
+  .monte .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+  .monte .intro{color:#5A4220}
+  .grupo{border:0;padding:0;margin:0 0 26px}
+  .grupo legend{font-weight:800;font-size:19px;margin-bottom:12px;padding:0;color:var(--choco)}
+  .opcoes{display:flex;flex-wrap:wrap;gap:8px}
+  .opcoes label{position:relative}
+  .opcoes input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+  .opcoes span{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.55);font-weight:700;font-size:16px;transition:background-color .15s ease}
+  .opcoes label:hover span{background:rgba(255,255,255,.9)}
+  .opcoes input:checked + span{background:var(--choco);color:var(--branco)}
+  .opcoes input:focus-visible + span{outline:3px solid var(--choco);outline-offset:2px}
+  .comanda{background:var(--branco);border-radius:4px;padding:28px 26px 34px;position:relative;box-shadow:0 18px 40px -18px rgba(70,40,0,.55);transform:rotate(1.2deg);font-size:16px}
+  .comanda::after{content:"";position:absolute;left:0;right:0;bottom:-12px;height:12px;background:
+     linear-gradient(-45deg, transparent 8px, var(--branco) 0) 0 0/16px 12px repeat-x,
+     linear-gradient(45deg, transparent 8px, var(--branco) 0) 0 0/16px 12px repeat-x}
+  .comanda-topo{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+  .comanda-topo .selo-logo{width:40px;height:40px;padding:2px}
+  .comanda h3{margin:0;font-family:var(--display);font-style:italic;font-weight:900;font-size:24px;font-variation-settings:"SOFT" 100,"WONK" 1;color:var(--choco)}
+  .comanda .data{color:var(--cinza);font-size:14px;margin:0 0 16px}
+  .comanda ul{list-style:none;margin:0 0 18px;padding:14px 0;border-top:1.5px dashed #D9C9A9;border-bottom:1.5px dashed #D9C9A9}
+  .comanda li{display:flex;justify-content:space-between;gap:12px;padding:5px 0}
+  .comanda li span:first-child{color:var(--cinza)}
+  .comanda li span:last-child{font-weight:800;text-align:right}
+  .comanda .nome-combo{font-size:15px;color:var(--cinza);margin:0 0 16px}
+  .comanda .nome-combo b{color:var(--tinta)}
+  .comanda .btn{width:100%}
+
+  /* galeria */
+  .galeria{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:120px;gap:14px}
+  .galeria figure{margin:0;display:flex;flex-direction:column}
+  .galeria .foto{flex:1;border-radius:var(--raio-m)}
+  .galeria figcaption{font-size:13px;color:var(--cinza);padding-top:6px}
+  .g1{grid-column:1/6;grid-row:span 4}
+  .g2{grid-column:6/9;grid-row:span 2}
+  .g3{grid-column:9/13;grid-row:span 2}
+  .g4{grid-column:6/10;grid-row:span 2}
+  .g5{grid-column:10/13;grid-row:span 2}
+  .galeria-nota{margin-top:18px;font-size:14px;color:var(--cinza)}
+
+  /* visite */
+  .visite{background:var(--trigo)}
+  .visite .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+  .horario{width:100%;border-collapse:collapse;margin:0 0 28px;font-size:17px}
+  .horario td{padding:10px 0;border-bottom:1px solid var(--linha)}
+  .horario td:last-child{text-align:right;font-weight:700}
+  .horario tr.hoje td{font-weight:800;color:var(--choco)}
+  .horario tr.hoje td:first-child::after{content:"hoje";font-weight:800;font-size:12px;background:var(--ouro-2);border-radius:999px;padding:2px 8px;margin-left:8px;vertical-align:2px}
+  .endereco{font-size:19px;line-height:1.45;margin:18px 0 22px}
+  .endereco strong{display:block;font-size:22px;color:var(--choco)}
+  .visite-acoes{display:flex;gap:10px;flex-wrap:wrap}
+  .visite-midia{display:grid;gap:14px}
+  .visite-midia .fachada{aspect-ratio:16/9;border-radius:var(--raio-l)}
+  .mapa{border-radius:var(--raio-l);overflow:hidden;background:#EDE3CF;aspect-ratio:16/9;position:relative}
+  .mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  /* rodapé */
+  footer.rodape{background:var(--choco);color:rgba(255,255,255,.78);padding:52px 0 120px;font-size:15px}
+  footer.rodape .wrap{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap}
+  footer.rodape .marca{color:var(--branco);margin-bottom:14px}
+  footer.rodape p{margin:0 0 6px}
+  footer.rodape a{color:var(--ouro-2)}
+  .conceito{opacity:.6;font-size:13px;margin-top:18px;max-width:52ch}
+
+  /* barra do pedido + gaveta */
+  .barra{position:fixed;left:50%;bottom:18px;transform:translate(-50%,140%);z-index:50;display:flex;align-items:center;gap:16px;background:var(--choco);color:var(--branco);border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 14px 40px -10px rgba(0,0,0,.55);transition:transform .35s cubic-bezier(.3,1.3,.5,1);max-width:calc(100% - 24px)}
+  .barra.visivel{transform:translate(-50%,0)}
+  .barra .cont{font-weight:700;white-space:nowrap}
+  .barra .cont b{display:inline-grid;place-items:center;min-width:26px;height:26px;border-radius:999px;background:var(--ouro-2);color:var(--choco);margin-right:8px;padding:0 6px}
+  .barra.pulou .cont b{animation:pulou .4s ease}
+  @keyframes pulou{40%{transform:scale(1.35)}}
+  .zap-flutua{position:fixed;right:20px;bottom:20px;z-index:45;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 28px -8px rgba(0,0,0,.45);transition:opacity .2s ease, transform .2s ease}
+  .zap-flutua svg{width:30px;height:30px}
+  .zap-flutua.oculto{opacity:0;transform:scale(.6);pointer-events:none}
+  .veu{position:fixed;inset:0;background:rgba(30,16,6,.55);z-index:60;opacity:0;pointer-events:none;transition:opacity .25s ease}
+  .veu.aberto{opacity:1;pointer-events:auto}
+  .gaveta{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--branco);z-index:61;transform:translateX(102%);transition:transform .32s cubic-bezier(.3,.9,.3,1);display:flex;flex-direction:column}
+  .gaveta.aberta{transform:none}
+  .gaveta-topo{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--linha)}
+  .gaveta-topo h2{margin:0;font-family:var(--display);font-style:italic;font-weight:900;font-size:28px;font-variation-settings:"SOFT" 100,"WONK" 1;color:var(--choco)}
+  .fechar{width:42px;height:42px;border-radius:50%;border:0;background:var(--branco);box-shadow:inset 0 0 0 1.5px var(--linha);font-size:22px;line-height:1}
+  .gaveta .corpo{flex:1;overflow:auto;padding:8px 24px 24px}
+  .linha-pedido{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px dashed #D9C9A9}
+  .linha-pedido .nm{font-weight:700}
+  .linha-pedido small{display:block;color:var(--cinza);font-weight:500;font-size:14px}
+  .campo{margin-top:20px}
+  .campo > label, .campo > span{display:block;font-weight:800;margin-bottom:8px}
+  .campo input[type=text], .campo textarea{width:100%;border:1.5px solid var(--linha);background:var(--branco);border-radius:10px;padding:11px 13px;font-size:16px}
+  .campo input[type=text]:focus, .campo textarea:focus{outline:none;border-color:var(--choco-3)}
+  .campo textarea{min-height:72px;resize:vertical}
+  .seg{display:flex;background:var(--trigo);border-radius:999px;padding:4px}
+  .seg label{flex:1;position:relative}
+  .seg input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+  .seg span{display:block;text-align:center;padding:9px 10px;border-radius:999px;font-weight:700}
+  .seg input:checked + span{background:var(--choco);color:var(--branco)}
+  .seg input:focus-visible + span{outline:3px solid var(--ouro)}
+  .gaveta-pe{padding:18px 24px 24px;border-top:1px solid var(--linha)}
+  .gaveta-pe .btn{width:100%;padding:15px 20px;background:#1FAF57;color:#fff}
+  .gaveta-pe .btn:hover{background:#178F46}
+  .gaveta-pe .btn:disabled{opacity:.5;cursor:not-allowed}
+  .gaveta-pe p{margin:10px 0 0;font-size:13px;color:var(--cinza);text-align:center}
+  .limpar{background:none;border:0;color:var(--cinza);text-decoration:underline;font-size:14px;padding:12px 0 0}
+  .aviso{position:fixed;left:50%;top:86px;transform:translate(-50%,-20px);background:var(--choco);color:var(--branco);padding:10px 18px;border-radius:999px;font-weight:700;font-size:15px;z-index:70;opacity:0;pointer-events:none;transition:opacity .2s ease, transform .2s ease;white-space:nowrap}
+  .aviso.on{opacity:1;transform:translate(-50%,0)}
+
+  /* responsivo */
+  @media (max-width: 960px){
+    .topo nav{display:none}
+    .topo .status{margin-left:auto}
+    .hero .wrap{grid-template-columns:1fr;gap:20px;padding-top:36px}
+    .hero-texto{min-height:0}
+    .medalha-box{max-width:300px}
+    .lista{grid-template-columns:1fr}
+    .casa .wrap, .monte .wrap, .visite .wrap{grid-template-columns:1fr;gap:40px}
+    .casa-fotos .f2{right:0}
+    .comanda{transform:none}
+    .bloco{padding:68px 0}
+    .galeria{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
+    .galeria figure{grid-column:auto!important;grid-row:auto!important}
+    .galeria .foto{flex:none;aspect-ratio:1}
+    .galeria .g1{grid-column:1/-1!important}
+    .galeria .g1 .foto{aspect-ratio:4/3}
+  }
+  @media (max-width: 560px){
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .topo .wrap{height:66px;gap:12px}
+    .topo .btn{display:none}
+    .selo-logo{width:42px;height:42px}
+    .marca-txt b{font-size:20px}
+    .marca-txt small{font-size:13px}
+    .status{font-size:13px}
+    .status .longo{display:none}
+    .status .curto{display:inline}
+    .hero p.sub{font-size:18px}
+    .regua{padding:18px 16px 14px;border-radius:var(--raio-m)}
+    .faixa .zonas span{font-size:12px;padding-left:8px}
+    .horas span:nth-child(even){visibility:hidden}
+    .busca{flex:1 1 100%}
+    .abas{flex-wrap:nowrap;overflow-x:auto;margin:0 -18px;padding:2px 18px 6px;scrollbar-width:none}
+    .abas::-webkit-scrollbar{display:none}
+    .aba{white-space:nowrap}
+    .item .thumb{width:54px;height:54px}
+    .zap-flutua{width:52px;height:52px;right:14px;bottom:14px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Nova Pão Quente, início">
+      <span class="selo-logo"><span class="foto"><img data-f="logo" alt=""></span></span>
+      <span class="marca-txt"><small>Nova</small><b>Pão Quente</b></span>
+    </a>
+    <nav aria-label="Seções">
+      <a href="#casa">A padaria</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#monte">Monte seu café</a>
+      <a href="#visite">Como chegar</a>
+    </nav>
+    <span class="status" id="status" role="status"><i></i><span class="longo">Carregando horário</span><span class="curto"></span></span>
+    <a class="btn btn-ouro" href="https://wa.me/5511932057869" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+      Pedir no WhatsApp
+    </a>
+  </div>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio" aria-labelledby="hero-titulo">
+  <div class="wrap">
+    <div class="hero-texto">
+      <p class="quando troca" id="quando">Hoje</p>
+      <h1 id="hero-titulo" class="troca">Bom dia, Assunção.</h1>
+      <p class="sub troca" id="hero-sub">Pão na chapa, café passado e o balcão aberto desde as 6h.</p>
+      <div class="hero-acoes">
+        <a class="btn btn-ouro" href="#cardapio">Ver o cardápio</a>
+        <a class="btn btn-contorno" href="#visite">Como chegar</a>
+      </div>
+    </div>
+
+    <div class="medalha-box">
+      <div class="medalha" id="medalha">
+        <div class="fotos">
+          <div class="foto ativa" data-p="manha"><img data-f="pao_chapa" alt="Pão na chapa e café preto servidos no balcão da Nova Pão Quente"></div>
+          <div class="foto" data-p="tarde"><img data-f="lanche" alt="Lanche com batata frita servido na bandeja" loading="lazy"></div>
+          <div class="foto" data-p="noite"><img data-f="chopp" alt="Dois copos de chopp e uma garrafa de cerveja na mesa" loading="lazy"></div>
+        </div>
+        <span class="aro"></span>
+        <div class="fita" aria-hidden="true">
+          <svg viewBox="0 0 520 110">
+            <defs>
+              <linearGradient id="gFita" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBE08A"/><stop offset=".55" stop-color="#E9AE2C"/><stop offset="1" stop-color="#C98A14"/></linearGradient>
+              <linearGradient id="gPonta" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D89A1C"/><stop offset="1" stop-color="#A86F0D"/></linearGradient>
+            </defs>
+            <path d="M0 40 L70 34 L70 96 L0 102 L22 71 Z" fill="url(#gPonta)"/>
+            <path d="M520 40 L450 34 L450 96 L520 102 L498 71 Z" fill="url(#gPonta)"/>
+            <path d="M58 22 Q260 -6 462 22 L462 84 Q260 56 58 84 Z" fill="url(#gFita)"/>
+            <path d="M58 84 L70 96 L70 80 Z M462 84 L450 96 L450 80 Z" fill="#7A4E0A"/>
+            <text id="fita-txt" x="260" y="66" text-anchor="middle" font-size="44">De manhã</text>
+          </svg>
+        </div>
+      </div>
+      <p class="credito troca" id="hero-credito">Foto: Maria Colombo via Google Maps</p>
+    </div>
+
+    <div class="regua">
+      <div class="regua-topo">
+        <h2 id="regua-label">O que tem na padaria <span id="regua-hora">agora</span></h2>
+        <button type="button" class="agora-btn" id="voltar-agora" hidden>Voltar para agora</button>
+      </div>
+      <div class="faixa">
+        <div class="zonas" aria-hidden="true">
+          <span class="z-manha">Manhã</span>
+          <span class="z-tarde">Tarde</span>
+          <span class="z-noite">Noite</span>
+        </div>
+        <div class="marca-agora" id="marca-agora" hidden></div>
+        <input type="range" id="relogio" min="6" max="21.75" step="0.25" value="7" aria-labelledby="regua-label" aria-describedby="regua-dica">
+      </div>
+      <div class="horas" aria-hidden="true"><span>6h</span><span>8h</span><span>10h</span><span>12h</span><span>14h</span><span>16h</span><span>18h</span><span>20h</span><span>22h</span></div>
+      <p class="sr" id="regua-dica">Arraste para ver sugestões em cada horário do dia.</p>
+      <div class="sugestoes" id="sugestoes" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= A PADARIA ================= -->
+<section class="bloco casa claro" id="casa" aria-labelledby="casa-titulo">
+  <div class="wrap">
+    <div class="casa-fotos">
+      <div class="foto f1"><img data-f="fachada" alt="Fachada da Nova Pão Quente na Av. João Firmino" loading="lazy"></div>
+      <div class="foto f2"><img data-f="balcao" alt="Balcão da padaria com vitrine e máquina de café" loading="lazy"></div>
+      <p class="credito">Fachada: perfil da padaria no Google. Balcão: Wilson Paiva via Google Maps.</p>
+    </div>
+    <div>
+      <h2 class="titulo-sec" id="casa-titulo">Padaria de bairro, do café ao chopp</h2>
+      <p class="intro">Na esquina da Av. João Firmino, a Nova Pão Quente abre às 6h com pão saindo e café no balcão. Durante o dia tem almoço, lanche e doce. No fim da tarde, pizza, porção e chopp com os amigos.</p>
+      <ul class="fatos">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span><b>Todos os dias, das 6h às 22h</b>Inclusive sábado, domingo e feriado.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h16M6 11V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4M5 11l1 8h12l1-8"/></svg>
+          <span><b>Café, almoço, lanche e pizza</b>Pães, doces, salgados, bolos, porções e chopp no mesmo lugar.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8"/><path d="M12 7v6h5l2 5M12 10h-3"/><path d="M8.5 12.5a5 5 0 1 0 6.2 6.5"/></svg>
+          <span><b>Acessível</b>Entrada, banheiro e estacionamento acessíveis para cadeira de rodas.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CARDÁPIO ================= -->
+<section class="bloco cardapio claro" id="cardapio" aria-labelledby="cardapio-titulo">
+  <div class="wrap">
+    <h2 class="titulo-sec" id="cardapio-titulo">Cardápio</h2>
+    <p class="intro">Toque no + para separar o que você quer. Quando terminar, a gente recebe tudo de uma vez pelo WhatsApp.</p>
+    <div class="cardapio-ctrl">
+      <div class="abas" role="tablist" aria-label="Categorias do cardápio" id="abas"></div>
+      <label class="busca">
+        <span class="sr">Buscar no cardápio</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="busca" placeholder="Buscar: coxinha, chopp, pizza…" autocomplete="off">
+      </label>
+    </div>
+    <div class="lista" id="lista" role="tabpanel" aria-live="polite"></div>
+    <p class="nota-card">Disponibilidade pode variar ao longo do dia. Na dúvida, chame a gente no WhatsApp.</p>
+  </div>
+</section>
+
+<!-- ================= MONTE SEU CAFÉ ================= -->
+<section class="bloco monte claro" id="monte" aria-labelledby="monte-titulo">
+  <div class="wrap">
+    <div>
+      <h2 class="titulo-sec" id="monte-titulo">Monte seu café da manhã</h2>
+      <p class="intro">Escolha o pão, o recheio e a bebida. A comanda ao lado vai sendo preenchida.</p>
+      <form id="montador">
+        <fieldset class="grupo"><legend>Pão</legend><div class="opcoes" data-grupo="pao"></div></fieldset>
+        <fieldset class="grupo"><legend>Recheio</legend><div class="opcoes" data-grupo="recheio"></div></fieldset>
+        <fieldset class="grupo"><legend>Bebida</legend><div class="opcoes" data-grupo="bebida"></div></fieldset>
+      </form>
+    </div>
+    <aside class="comanda" aria-labelledby="comanda-titulo">
+      <div class="comanda-topo">
+        <span class="selo-logo"><span class="foto"><img data-f="logo" alt=""></span></span>
+        <h3 id="comanda-titulo">Comanda</h3>
+      </div>
+      <p class="data" id="comanda-data"></p>
+      <ul id="comanda-itens"></ul>
+      <p class="nome-combo" id="comanda-nome"></p>
+      <button type="button" class="btn btn-choco" id="add-combo">Adicionar ao pedido</button>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= GALERIA ================= -->
+<section class="bloco claro" id="fotos" aria-labelledby="fotos-titulo">
+  <div class="wrap">
+    <h2 class="titulo-sec" id="fotos-titulo">Quem passa por aqui</h2>
+    <p class="intro">Fotos publicadas por clientes no Google Maps.</p>
+    <div class="galeria">
+      <figure class="g1"><div class="foto"><img data-f="cafe_requeijao" alt="Café preto e pão francês com requeijão" loading="lazy"></div><figcaption>Fábio (Fabyou)</figcaption></figure>
+      <figure class="g2"><div class="foto"><img data-f="espresso" alt="Xícara de café expresso" loading="lazy"></div><figcaption>Andreia Nunes</figcaption></figure>
+      <figure class="g3"><div class="foto"><img data-f="lanche" alt="Lanche com batata frita" loading="lazy"></div><figcaption>Karen Cecília</figcaption></figure>
+      <figure class="g4"><div class="foto"><img data-f="balcao" alt="Balcão e vitrine da padaria" loading="lazy"></div><figcaption>Wilson Paiva</figcaption></figure>
+      <figure class="g5"><div class="foto"><img data-f="chopp" alt="Chopp e cerveja na mesa" loading="lazy"></div><figcaption>Gilson Maru</figcaption></figure>
+    </div>
+    <p class="galeria-nota"><a href="https://www.google.com/maps/place/?q=place_id:ChIJG_wQhWZBzpQRjGkDLxjRa1Q" target="_blank" rel="noopener">Ver todas as fotos e avaliações no Google</a></p>
+  </div>
+</section>
+
+<!-- ================= VISITE ================= -->
+<section class="bloco visite claro" id="visite" aria-labelledby="visite-titulo">
+  <div class="wrap">
+    <div>
+      <h2 class="titulo-sec" id="visite-titulo">Venha tomar um café</h2>
+      <p class="endereco"><strong>Av. João Firmino, 1251</strong>Assunção, São Bernardo do Campo, SP<br>CEP 09812-460</p>
+      <table class="horario" aria-label="Horário de funcionamento"><tbody id="horario"></tbody></table>
+      <div class="visite-acoes">
+        <a class="btn btn-choco" href="https://www.google.com/maps/dir/?api=1&destination=Nova+P%C3%A3o+Quente&destination_place_id=ChIJG_wQhWZBzpQRjGkDLxjRa1Q" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Traçar rota
+        </a>
+        <a class="btn btn-contorno" href="tel:+5511932057869">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+          (11) 93205-7869
+        </a>
+      </div>
+    </div>
+    <div class="visite-midia">
+      <div class="mapa">
+        <iframe title="Mapa da Nova Pão Quente" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=Nova%20P%C3%A3o%20Quente%2C%20Av.%20Jo%C3%A3o%20Firmino%2C%201251%2C%20S%C3%A3o%20Bernardo%20do%20Campo&z=16&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <div>
+      <a class="marca" href="#inicio">
+        <span class="selo-logo"><span class="foto"><img data-f="logo" alt="" loading="lazy"></span></span>
+        <span class="marca-txt"><small>Nova</small><b>Pão Quente</b></span>
+      </a>
+      <p>Av. João Firmino, 1251, Assunção, São Bernardo do Campo, SP</p>
+      <p>Todos os dias, das 6h às 22h</p>
+    </div>
+    <div>
+      <p><a href="https://wa.me/5511932057869" target="_blank" rel="noopener">WhatsApp (11) 93205-7869</a></p>
+      <p><a href="https://www.instagram.com/padaria_paoquente_sbc/" target="_blank" rel="noopener">Instagram @padaria_paoquente_sbc</a></p>
+      <p><a href="https://www.google.com/maps/place/?q=place_id:ChIJG_wQhWZBzpQRjGkDLxjRa1Q" target="_blank" rel="noopener">Avaliações no Google</a></p>
+      <p class="conceito">Proposta de site. Cardápio e serviços a confirmar com a padaria. Fotos de clientes publicadas no Google Maps, usadas com crédito apenas para apresentação; para publicar o site, substituir por fotos da padaria ou obter autorização dos autores.</p>
+    </div>
+  </div>
+</footer>
+
+<a class="zap-flutua" id="zap-flutua" href="https://wa.me/5511932057869" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+</a>
+
+<div class="barra" id="barra" aria-hidden="true">
+  <span class="cont"><b>0</b>itens no pedido</span>
+  <button type="button" class="btn btn-ouro" id="abrir-pedido">Ver pedido</button>
+</div>
+
+<div class="veu" id="veu"></div>
+<aside class="gaveta" id="gaveta" role="dialog" aria-modal="true" aria-labelledby="gaveta-titulo" aria-hidden="true">
+  <div class="gaveta-topo">
+    <h2 id="gaveta-titulo">Seu pedido</h2>
+    <button type="button" class="fechar" id="fechar-pedido" aria-label="Fechar pedido">×</button>
+  </div>
+  <div class="corpo">
+    <div id="pedido-itens"></div>
+    <button type="button" class="limpar" id="limpar">Esvaziar pedido</button>
+    <div class="campo">
+      <span id="modo-label">Como você prefere?</span>
+      <div class="seg" role="radiogroup" aria-labelledby="modo-label">
+        <label><input type="radio" name="modo" value="retirar" checked><span>Retiro na loja</span></label>
+        <label><input type="radio" name="modo" value="entrega"><span>Entrega</span></label>
+      </div>
+    </div>
+    <div class="campo" id="campo-endereco" hidden>
+      <label for="endereco">Endereço de entrega</label>
+      <input type="text" id="endereco" placeholder="Rua, número, bairro">
+    </div>
+    <div class="campo">
+      <label for="nome">Seu nome</label>
+      <input type="text" id="nome" autocomplete="given-name" placeholder="Para chamarmos no balcão">
+    </div>
+    <div class="campo">
+      <label for="obs">Observações</label>
+      <textarea id="obs" placeholder="Ex.: pão bem moreninho, sem cebola na pizza"></textarea>
+    </div>
+  </div>
+  <div class="gaveta-pe">
+    <button type="button" class="btn" id="enviar">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+      Enviar pedido pelo WhatsApp
+    </button>
+    <p>O WhatsApp abre com a mensagem pronta. A padaria confirma valores e prazo por lá.</p>
+  </div>
+</aside>
+
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+  var ZAP = "5511932057869", ABRE = 6, FECHA = 22;
+
+  /* ---------- fotos (Google Maps) ---------- */
+  var G = "https://lh3.googleusercontent.com/gps-cs-s/";
+  var FOTOS = {
+    logo:           {u:"https://lh3.googleusercontent.com/a-/ALV-UjVi7lBFyUTI-8VKG66J0YBMeSgswM3eOb73RTEc3F7auKvHwKw", s:"=s240-p-k-no-mo"},
+    fachada:        {u:G+"ANWiy9SBSV0KvsI5GlSXJK4y30K-AD4j3IdgivNW4dzbySyJ42NFiiaUz6zw29G0mOJ0HdL_MmQFQdLXTOR104h6L6lZK3tpDV270vmuOPpq2nNLNvc6A7jv-PbgdxojZG75CoUeVD-a", s:"=w1400-k-no"},
+    balcao:         {u:G+"ANWiy9SAKpCxF85psBisZuNiRDEpyZ1_YOY2-gIQG1BydZ9qTyGouGS83iTNnlf4VBqwcd_bFQWesbI7wEEba_ATQ910L1iXSvraQjcQS_iE3NbIo8BgsyUU5kGPa0nUdrVYeB9FItYyAA", s:"=w1200-k-no"},
+    pao_chapa:      {u:G+"ANWiy9SoDq-HCRqOeCvUZzXJjADLbgkwB6i7s1_ytCFPpqO1eFxwrka5JBZl5TshU5L7rtVYfnWQBenzWehmEi1LhmEAhKTq01rqPR-k-H3vPZyj2qtp-gtYM9a5-V-BNEfw1galywU6kg", s:"=w1000-k-no"},
+    cafe_requeijao: {u:G+"ANWiy9Ty69lcFOl5TNHKFQBQJ-QgyZGyuiuPdM4jzhGSCyDUac-PJu2KAiIMHeOAahhVO1gGmAX529ip_GSIwm3i9S7gPgICWRoGp2fDjQRtAj9IoC4VE1CjGtidMRsclpm9FAGL4RrSJyywlgIq", s:"=w1000-k-no"},
+    espresso:       {u:G+"ANWiy9RW9q6rVaXK1DddPQHCYdwm1eKjpQ4UcI1pipN4-hcGST4nKR71JxwQvRmkKYhCAgTqN45Z8p1y1VSHZox_Et1fBOPeKTCI59gCSJ4XTPj8wcxO2iqGhidVHNIuIVgXMfMeB-2N", s:"=w900-k-no"},
+    lanche:         {u:G+"ANWiy9QuJgFMj9SM65AXkvg3WLl1cpqMiDigTRSd12VXAgeqEvbmwD_MVaeWvbstS6-WqjQjnwhT5FqybUALmf9si9YmAoYEJk_Ps8BqlqrC8BhC2Ck3jzXEvG-g4s0INg7znuCXUlv8gJdT6Zs", s:"=w1000-k-no"},
+    chopp:          {u:G+"ANWiy9QLqyTjairGarlhNWL8MQ-EeXy5lzi7D-3O7lRG0NL_oajG09RzzUYJLZjpPABqzUiag_YGlyzrcRgWHBeZdAvRfeeGsxr40m1_B4vcYHDST_HbaIYmsi3riaG2gI6zAMJdcWWB", s:"=w1000-k-no"}
+  };
+  function urlFoto(k, thumb){ var f = FOTOS[k]; return f ? f.u + (thumb ? "=w160-h160-p-k-no" : f.s) : ""; }
+  function carregaFotos(raiz){
+    (raiz || document).querySelectorAll("img[data-f]:not([src])").forEach(function(img){
+      img.addEventListener("error", function(){ if(img.parentNode) img.parentNode.classList.add("sem-foto"); }, {once:true});
+      img.src = urlFoto(img.getAttribute("data-f"), img.hasAttribute("data-thumb"));
+    });
+  }
+
+  /* ---------- cardápio (ilustrativo: validar itens com a padaria) ---------- */
+  var CATS = [
+    {id:"cafe", nome:"Café da manhã"}, {id:"paes", nome:"Pães"}, {id:"lanches", nome:"Lanches"},
+    {id:"salgados", nome:"Salgados"}, {id:"doces", nome:"Doces e bolos"}, {id:"almoco", nome:"Almoço"},
+    {id:"pizzas", nome:"Pizzas"}, {id:"chopp", nome:"Chopp e porções"}, {id:"bebidas", nome:"Bebidas"}
+  ];
+  var ITENS = [
+    {id:"c1", cat:"cafe", nome:"Pão na chapa", desc:"Pão francês com manteiga, tostado na chapa.", p:["manha"], f:"pao_chapa"},
+    {id:"c2", cat:"cafe", nome:"Pão com requeijão", desc:"Pão francês aberto com bastante requeijão.", p:["manha"], f:"cafe_requeijao"},
+    {id:"c3", cat:"cafe", nome:"Pão com ovo", desc:"Ovo frito ou mexido no pão francês.", p:["manha"]},
+    {id:"c4", cat:"cafe", nome:"Omelete", desc:"Com queijo, presunto ou tomate. Você escolhe.", p:["manha"]},
+    {id:"c5", cat:"cafe", nome:"Iogurte com granola e frutas", desc:"Para começar o dia mais leve.", p:["manha"]},
+
+    {id:"p1", cat:"paes", nome:"Pão francês", desc:"Casquinha crocante, miolo macio. Peça moreninho ou mais clarinho.", p:["manha","tarde","noite"]},
+    {id:"p2", cat:"paes", nome:"Pão de queijo", desc:"Quentinho, por unidade ou no saquinho.", p:["manha","tarde"]},
+    {id:"p3", cat:"paes", nome:"Pão de leite", desc:"Macio e levemente adocicado.", p:["manha","tarde"]},
+    {id:"p4", cat:"paes", nome:"Pão integral", desc:"Fatiado na hora, se você preferir.", p:["manha","tarde"]},
+    {id:"p5", cat:"paes", nome:"Bisnaguinha", desc:"Pacote para a lancheira da semana.", p:["manha","tarde"]},
+
+    {id:"l1", cat:"lanches", nome:"X-burguer com fritas", desc:"Hambúrguer, queijo e porção de batata frita.", p:["tarde","noite"], f:"lanche"},
+    {id:"l2", cat:"lanches", nome:"Misto quente", desc:"Presunto e queijo derretido.", p:["manha","tarde"]},
+    {id:"l3", cat:"lanches", nome:"X-salada", desc:"Hambúrguer, queijo, alface, tomate e maionese.", p:["tarde","noite"]},
+    {id:"l4", cat:"lanches", nome:"Bauru", desc:"Rosbife, queijo, tomate e picles no pão francês.", p:["tarde","noite"]},
+
+    {id:"s1", cat:"salgados", nome:"Coxinha", desc:"Massa sequinha, recheio de frango bem temperado.", p:["tarde","noite"]},
+    {id:"s2", cat:"salgados", nome:"Esfiha de carne", desc:"Aberta, com bastante recheio.", p:["tarde","noite"]},
+    {id:"s3", cat:"salgados", nome:"Enroladinho de salsicha", desc:"O clássico do lanche da tarde.", p:["tarde"]},
+    {id:"s4", cat:"salgados", nome:"Empada de frango", desc:"Massa que desmancha.", p:["tarde"]},
+    {id:"s5", cat:"salgados", nome:"Kibe", desc:"Frito na hora, com limão à parte.", p:["tarde","noite"]},
+
+    {id:"d1", cat:"doces", nome:"Sonho", desc:"Recheio generoso de creme, açúcar por cima.", p:["manha","tarde"]},
+    {id:"d2", cat:"doces", nome:"Bolo de cenoura com chocolate", desc:"Fatia ou bolo inteiro sob encomenda.", p:["tarde"]},
+    {id:"d3", cat:"doces", nome:"Bolo de fubá", desc:"Para o café da tarde.", p:["tarde"]},
+    {id:"d4", cat:"doces", nome:"Pudim", desc:"Calda de caramelo.", p:["tarde","noite"]},
+    {id:"d5", cat:"doces", nome:"Torta de limão", desc:"Merengue tostado, base crocante.", p:["tarde","noite"]},
+
+    {id:"a1", cat:"almoco", nome:"Prato do dia", desc:"Arroz, feijão, salada e a mistura do dia. Pergunte no balcão.", p:["tarde"]},
+    {id:"a2", cat:"almoco", nome:"Filé de frango grelhado", desc:"Com arroz, feijão e salada.", p:["tarde"]},
+    {id:"a3", cat:"almoco", nome:"Parmegiana", desc:"De frango ou carne, com arroz e fritas.", p:["tarde"]},
+
+    {id:"z1", cat:"pizzas", nome:"Pizza mussarela", desc:"Molho de tomate, mussarela e orégano.", p:["noite"]},
+    {id:"z2", cat:"pizzas", nome:"Pizza calabresa", desc:"Calabresa fatiada e cebola.", p:["noite"]},
+    {id:"z3", cat:"pizzas", nome:"Pizza marguerita", desc:"Mussarela, tomate e manjericão.", p:["noite"]},
+    {id:"z4", cat:"pizzas", nome:"Pizza portuguesa", desc:"Presunto, ovo, cebola, ervilha e azeitona.", p:["noite"]},
+
+    {id:"h1", cat:"chopp", nome:"Chopp", desc:"Tirado na hora, bem gelado.", p:["noite"], f:"chopp"},
+    {id:"h2", cat:"chopp", nome:"Cerveja long neck", desc:"Pergunte as marcas do dia.", p:["noite"]},
+    {id:"h3", cat:"chopp", nome:"Batata frita", desc:"Porção para dividir.", p:["tarde","noite"], f:"lanche"},
+    {id:"h4", cat:"chopp", nome:"Calabresa acebolada", desc:"Porção com pão francês.", p:["noite"]},
+    {id:"h5", cat:"chopp", nome:"Isca de frango", desc:"Empanada, com molho à parte.", p:["noite"]},
+
+    {id:"b1", cat:"bebidas", nome:"Café expresso", desc:"Tirado na hora, na xícara.", p:["manha","tarde","noite"], f:"espresso"},
+    {id:"b2", cat:"bebidas", nome:"Pingado", desc:"Café com um tanto de leite, no copo americano.", p:["manha","tarde"]},
+    {id:"b3", cat:"bebidas", nome:"Cappuccino", desc:"Cremoso, com canela por cima.", p:["manha","tarde"]},
+    {id:"b4", cat:"bebidas", nome:"Chocolate quente", desc:"Para os dias frios do ABC.", p:["tarde","noite"]},
+    {id:"b5", cat:"bebidas", nome:"Suco de laranja", desc:"Espremido na hora.", p:["manha","tarde"]}
+  ];
+  var porId = {}; ITENS.forEach(function(i){ porId[i.id] = i; });
+
+  var CENAS = {
+    manha:{t:"Bom dia, Assunção.", s:"Pão na chapa, café passado e o balcão aberto desde as 6h.", fita:"De manhã", cred:"Foto: Maria Colombo via Google Maps", sug:["c1","b1","c2"]},
+    tarde:{t:"Boa tarde. Bateu a fome?", s:"Almoço, lanche com fritas, salgado e um café para segurar até o fim do expediente.", fita:"À tarde", cred:"Foto: Karen Cecília via Google Maps", sug:["l1","s1","a1"]},
+    noite:{t:"Boa noite. Chopp e pizza?", s:"Chopp gelado, porções e pizza para fechar o dia, até as 22h.", fita:"À noite", cred:"Foto: Gilson Maru via Google Maps", sug:["h1","z2","h4"]}
+  };
+
+  /* ---------- utilidades ---------- */
+  function $(s, c){ return (c||document).querySelector(s); }
+  function el(tag, attrs, html){ var e = document.createElement(tag); if(attrs) for(var k in attrs){ if(k==="class") e.className = attrs[k]; else e.setAttribute(k, attrs[k]); } if(html!=null) e.innerHTML = html; return e; }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  function periodo(h){ return h < 12 ? "manha" : (h < 18 ? "tarde" : "noite"); }
+  function fmtHora(h){ var hh = Math.floor(h), mm = Math.round((h-hh)*60); return hh + "h" + (mm ? String(mm).padStart(2,"0") : ""); }
+  var reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function agoraSP(){
+    var d = new Date(), o = {};
+    try{
+      new Intl.DateTimeFormat("en-US",{timeZone:"America/Sao_Paulo",hour:"numeric",minute:"numeric",weekday:"short",hour12:false})
+        .formatToParts(d).forEach(function(p){ o[p.type] = p.value; });
+      var dias = {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+      return {h:(parseInt(o.hour,10)%24), m:parseInt(o.minute,10), dia:dias[o.weekday]};
+    }catch(e){ return {h:d.getHours(), m:d.getMinutes(), dia:d.getDay()}; }
+  }
+  function estaAberto(){ var a = agoraSP(), t = a.h + a.m/60; return t >= ABRE && t < FECHA; }
+
+  /* ---------- status ---------- */
+  var statusEl = $("#status");
+  function atualizaStatus(){
+    var a = agoraSP(), t = a.h + a.m/60, aberto = t >= ABRE && t < FECHA, falta = Math.round((FECHA - t)*60);
+    statusEl.classList.toggle("fechado", !aberto);
+    statusEl.querySelector(".longo").textContent = aberto ? (falta <= 45 ? "Aberto, fecha em " + falta + " min" : "Aberto agora, até as 22h") : "Fechado agora, abre às 6h";
+    statusEl.querySelector(".curto").textContent = aberto ? (falta <= 45 ? "Fecha em " + falta + " min" : "Aberto até 22h") : "Abre às 6h";
+    return {aberto:aberto, t:t};
+  }
+
+  /* ---------- hero ---------- */
+  var relogio = $("#relogio"), marcaAgora = $("#marca-agora"), voltar = $("#voltar-agora");
+  var pAtual = null, valorAgora = 7;
+  function posAgora(){
+    var st = atualizaStatus();
+    if(st.aberto){
+      valorAgora = Math.min(21.75, Math.max(6, Math.floor(st.t*4)/4));
+      marcaAgora.style.left = ((st.t - 6) / 16 * 100) + "%";
+      marcaAgora.hidden = false;
+    } else { valorAgora = 6.5; marcaAgora.hidden = true; }
+  }
+  function trocaTexto(node, txt){
+    if(node.textContent === txt) return;
+    if(reduz){ node.textContent = txt; return; }
+    node.classList.add("saindo");
+    setTimeout(function(){ node.textContent = txt; node.classList.remove("saindo"); }, 180);
+  }
+  function renderHora(v, manual){
+    var p = periodo(v), c = CENAS[p], a = agoraSP(), aberto = estaAberto();
+    $("#regua-hora").textContent = manual ? "às " + fmtHora(v) : (aberto ? "agora" : "a partir das 6h");
+    trocaTexto($("#quando"), manual ? "Às " + fmtHora(v) : (aberto ? "Agora, " + fmtHora(a.h + a.m/60) : "Amanhã cedo"));
+    relogio.setAttribute("aria-valuetext", fmtHora(v));
+    voltar.hidden = !manual;
+    if(p === pAtual) return;
+    pAtual = p;
+    document.querySelectorAll("#medalha .foto").forEach(function(f){ f.classList.toggle("ativa", f.getAttribute("data-p") === p); });
+    $("#fita-txt").textContent = c.fita;
+    trocaTexto($("#hero-titulo"), c.t);
+    trocaTexto($("#hero-sub"), c.s);
+    trocaTexto($("#hero-credito"), c.cred);
+    var box = $("#sugestoes"); box.innerHTML = "";
+    box.appendChild(el("span", null, "Boa pedida:"));
+    c.sug.forEach(function(id){
+      var b = el("button", {type:"button", "class":"chip-add", "aria-label":"Adicionar " + porId[id].nome + " ao pedido"}, esc(porId[id].nome) + '<b aria-hidden="true">+</b>');
+      b.addEventListener("click", function(){ adiciona(id); });
+      box.appendChild(b);
+    });
+  }
+  relogio.addEventListener("input", function(){ renderHora(parseFloat(relogio.value), true); });
+  voltar.addEventListener("click", function(){ posAgora(); relogio.value = valorAgora; renderHora(valorAgora, false); relogio.focus(); });
+
+  /* ---------- pedido ---------- */
+  var pedido = {}, nomesExtras = {};
+  function totalItens(){ var n = 0; for(var k in pedido) n += pedido[k]; return n; }
+  function nomeDe(id){ return porId[id] ? porId[id].nome : nomesExtras[id]; }
+  var avisoT;
+  function aviso(txt){ var a = $("#aviso"); a.textContent = txt; a.classList.add("on"); clearTimeout(avisoT); avisoT = setTimeout(function(){ a.classList.remove("on"); }, 1800); }
+  function adiciona(id, silencioso){ pedido[id] = (pedido[id] || 0) + 1; if(!silencioso) aviso(nomeDe(id) + " no pedido"); sincroniza(true); }
+  function muda(id, delta){ pedido[id] = (pedido[id] || 0) + delta; if(pedido[id] <= 0) delete pedido[id]; sincroniza(delta > 0); }
+  function sincroniza(pulou){
+    var n = totalItens(), barra = $("#barra");
+    barra.querySelector("b").textContent = n;
+    barra.querySelector(".cont").lastChild.textContent = n === 1 ? "item no pedido" : "itens no pedido";
+    barra.classList.toggle("visivel", n > 0);
+    barra.setAttribute("aria-hidden", n > 0 ? "false" : "true");
+    $("#zap-flutua").classList.toggle("oculto", n > 0);
+    if(pulou){ barra.classList.remove("pulou"); void barra.offsetWidth; barra.classList.add("pulou"); }
+    renderLista(); renderGaveta();
+  }
+
+  /* ---------- cardápio ---------- */
+  var catAtiva = periodo(agoraSP().h + agoraSP().m/60) === "noite" ? "chopp" : (periodo(agoraSP().h) === "tarde" ? "lanches" : "cafe");
+  if(!estaAberto()) catAtiva = "cafe";
+  var termo = "", abas = $("#abas");
+  CATS.forEach(function(c){
+    var on = c.id === catAtiva;
+    var b = el("button", {type:"button", role:"tab", "class":"aba", id:"aba-"+c.id, "aria-selected": on ? "true" : "false", "aria-controls":"lista", tabindex: on ? "0" : "-1"}, esc(c.nome));
+    b.addEventListener("click", function(){ selecionaCat(c.id); });
+    abas.appendChild(b);
+  });
+  abas.addEventListener("keydown", function(e){
+    if(e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    var i = CATS.findIndex(function(c){ return c.id === catAtiva; });
+    i = (i + (e.key === "ArrowRight" ? 1 : -1) + CATS.length) % CATS.length;
+    selecionaCat(CATS[i].id); $("#aba-" + CATS[i].id).focus(); e.preventDefault();
+  });
+  function selecionaCat(id){
+    catAtiva = id; termo = ""; $("#busca").value = "";
+    abas.querySelectorAll(".aba").forEach(function(b){ var on = b.id === "aba-" + id; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; });
+    renderLista();
+  }
+  $("#busca").addEventListener("input", function(e){
+    termo = e.target.value.trim();
+    abas.querySelectorAll(".aba").forEach(function(b){ b.setAttribute("aria-selected", termo ? "false" : String(b.id === "aba-" + catAtiva)); });
+    renderLista();
+  });
+  function semAcento(s){ return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); }
+  function renderLista(){
+    var lista = $("#lista"), foco = document.activeElement, focoId = foco && foco.getAttribute && foco.getAttribute("data-foco");
+    lista.innerHTML = "";
+    lista.setAttribute("aria-labelledby", termo ? "cardapio-titulo" : "aba-" + catAtiva);
+    var a = agoraSP(), pAgora = periodo(a.h + a.m/60), aberto = estaAberto(), t = semAcento(termo);
+    var itens = ITENS.filter(function(i){ return termo ? semAcento(i.nome + " " + i.desc).indexOf(t) > -1 : i.cat === catAtiva; });
+    if(!itens.length){ lista.appendChild(el("p", {"class":"vazio"}, "Nada encontrado para “" + esc(termo) + "”. Tente outro nome ou pergunte no WhatsApp.")); return; }
+    function bomAgora(i){ return aberto && i.p.length === 1 && i.p[0] === pAgora; }
+    var mostraSelo = itens.filter(bomAgora).length <= itens.length / 2;
+    itens.forEach(function(i){
+      var q = pedido[i.id] || 0;
+      var selo = mostraSelo && bomAgora(i) ? '<span class="selo">bom agora</span>' : "";
+      var row = el("div", {"class":"item"});
+      row.innerHTML = (i.f ? '<span class="thumb"><span class="foto"><img data-f="'+i.f+'" data-thumb alt="" loading="lazy"></span></span>' : '<span class="sem-thumb"></span>') +
+        "<h3>" + esc(i.nome) + selo + "</h3><p>" + esc(i.desc) + "</p>";
+      var ctrl = el("div", {"class":"ctrl"});
+      if(q){
+        ctrl.innerHTML = '<div class="qtd"><button type="button" data-foco="m-'+i.id+'" aria-label="Tirar um '+esc(i.nome)+'">−</button><output aria-live="polite">'+q+'</output><button type="button" data-foco="a-'+i.id+'" aria-label="Mais um '+esc(i.nome)+'">+</button></div>';
+        var bs = ctrl.querySelectorAll("button");
+        bs[0].addEventListener("click", function(){ muda(i.id, -1); });
+        bs[1].addEventListener("click", function(){ muda(i.id, 1); });
+      } else {
+        var add = el("button", {type:"button", "class":"add", "data-foco":"a-"+i.id, "aria-label":"Adicionar " + i.nome + " ao pedido"}, "+");
+        add.addEventListener("click", function(){ adiciona(i.id); });
+        ctrl.appendChild(add);
+      }
+      row.appendChild(ctrl);
+      lista.appendChild(row);
+    });
+    carregaFotos(lista);
+    if(focoId){
+      var alvo = lista.querySelector('[data-foco="'+focoId+'"]') || lista.querySelector('[data-foco="a-'+focoId.slice(2)+'"]');
+      if(alvo) alvo.focus();
+    }
+  }
+
+  /* ---------- monte seu café ---------- */
+  var OPC = {
+    pao:["Pão francês","Pão de leite","Pão integral","Pão de forma"],
+    recheio:["Manteiga na chapa","Requeijão","Queijo e presunto","Ovo mexido","Mortadela"],
+    bebida:["Pingado","Café expresso","Cappuccino","Chocolate quente","Suco de laranja"]
+  };
+  var ROT = {pao:"Pão", recheio:"Recheio", bebida:"Bebida"};
+  Object.keys(OPC).forEach(function(g){
+    var box = $('[data-grupo="'+g+'"]');
+    OPC[g].forEach(function(o, idx){
+      var l = el("label");
+      l.innerHTML = '<input type="radio" name="'+g+'" value="'+esc(o)+'"'+(idx===0?" checked":"")+'><span>'+esc(o)+'</span>';
+      box.appendChild(l);
+    });
+  });
+  function escolha(g){ var r = document.querySelector('input[name="'+g+'"]:checked'); return r ? r.value : ""; }
+  function apelido(p, r, b){
+    if(p === "Pão francês" && r === "Manteiga na chapa" && b === "Pingado") return "o clássico de padaria";
+    if(r === "Ovo mexido") return "café reforçado";
+    if(b === "Chocolate quente") return "café de dia frio";
+    if(b === "Suco de laranja") return "café mais leve";
+    return "café do seu jeito";
+  }
+  function renderComanda(){
+    var p = escolha("pao"), r = escolha("recheio"), b = escolha("bebida"), ul = $("#comanda-itens");
+    ul.innerHTML = "";
+    [["pao",p],["recheio",r],["bebida",b]].forEach(function(x){ ul.appendChild(el("li", null, "<span>" + ROT[x[0]] + "</span><span>" + esc(x[1]) + "</span>")); });
+    $("#comanda-nome").innerHTML = "Esse aqui é o <b>" + apelido(p, r, b) + "</b>.";
+  }
+  $("#montador").addEventListener("change", renderComanda);
+  $("#add-combo").addEventListener("click", function(){
+    var p = escolha("pao"), r = escolha("recheio"), b = escolha("bebida"), id = "combo:" + p + "|" + r + "|" + b;
+    nomesExtras[id] = p + " com " + r.charAt(0).toLowerCase() + r.slice(1) + " + " + b.toLowerCase();
+    adiciona(id, true); aviso("Café montado no pedido");
+  });
+  try{ $("#comanda-data").textContent = "Mesa do balcão, " + new Intl.DateTimeFormat("pt-BR",{timeZone:"America/Sao_Paulo",weekday:"long",day:"numeric",month:"long"}).format(new Date()); }
+  catch(e){ $("#comanda-data").textContent = "Mesa do balcão"; }
+
+  /* ---------- gaveta ---------- */
+  var gaveta = $("#gaveta"), veu = $("#veu"), ultimoFoco = null;
+  function abreGaveta(){ ultimoFoco = document.activeElement; gaveta.classList.add("aberta"); veu.classList.add("aberto"); gaveta.setAttribute("aria-hidden","false"); document.body.style.overflow = "hidden"; setTimeout(function(){ $("#fechar-pedido").focus(); }, 50); }
+  function fechaGaveta(){ gaveta.classList.remove("aberta"); veu.classList.remove("aberto"); gaveta.setAttribute("aria-hidden","true"); document.body.style.overflow = ""; if(ultimoFoco && document.contains(ultimoFoco)) ultimoFoco.focus(); }
+  $("#abrir-pedido").addEventListener("click", abreGaveta);
+  $("#fechar-pedido").addEventListener("click", fechaGaveta);
+  veu.addEventListener("click", fechaGaveta);
+  document.addEventListener("keydown", function(e){
+    if(!gaveta.classList.contains("aberta")) return;
+    if(e.key === "Escape") fechaGaveta();
+    if(e.key === "Tab"){
+      var f = Array.prototype.filter.call(gaveta.querySelectorAll('button, input, textarea, a[href]'), function(x){ return x.offsetParent !== null && !x.disabled; });
+      if(!f.length) return;
+      if(e.shiftKey && document.activeElement === f[0]){ f[f.length-1].focus(); e.preventDefault(); }
+      else if(!e.shiftKey && document.activeElement === f[f.length-1]){ f[0].focus(); e.preventDefault(); }
+    }
+  });
+  $("#limpar").addEventListener("click", function(){ pedido = {}; sincroniza(false); fechaGaveta(); });
+  function escolhaModo(){ return document.querySelector('input[name="modo"]:checked').value; }
+  document.querySelectorAll('input[name="modo"]').forEach(function(r){ r.addEventListener("change", function(){ $("#campo-endereco").hidden = escolhaModo() !== "entrega"; }); });
+  function renderGaveta(){
+    var box = $("#pedido-itens"), ids = Object.keys(pedido);
+    box.innerHTML = "";
+    $("#limpar").hidden = !ids.length;
+    $("#enviar").disabled = !ids.length;
+    if(!ids.length){ box.appendChild(el("p", {"class":"vazio"}, "Seu pedido está vazio. Toque no + do cardápio para começar.")); return; }
+    ids.forEach(function(id){
+      var nm = nomeDe(id), linha = el("div", {"class":"linha-pedido"});
+      var rot = id.indexOf("combo:") === 0 ? "Café montado<small>" + esc(nm) + "</small>" : esc(nm);
+      linha.innerHTML = '<span class="nm">' + rot + '</span><div class="qtd"><button type="button" aria-label="Tirar um">−</button><output>' + pedido[id] + '</output><button type="button" aria-label="Mais um">+</button></div>';
+      var bs = linha.querySelectorAll("button");
+      bs[0].addEventListener("click", function(){ muda(id, -1); if(!totalItens()) fechaGaveta(); });
+      bs[1].addEventListener("click", function(){ muda(id, 1); });
+      box.appendChild(linha);
+    });
+  }
+  $("#enviar").addEventListener("click", function(){
+    var ids = Object.keys(pedido); if(!ids.length) return;
+    var nome = $("#nome").value.trim(), modo = escolhaModo(), end = $("#endereco").value.trim(), obs = $("#obs").value.trim();
+    var linhas = ["Olá, Nova Pão Quente! Quero fazer um pedido" + (nome ? " (" + nome + ")" : "") + ":", ""];
+    ids.forEach(function(id){ linhas.push("• " + pedido[id] + "x " + (id.indexOf("combo:") === 0 ? "Café montado: " : "") + nomeDe(id)); });
+    linhas.push("");
+    linhas.push(modo === "entrega" ? "Entrega" + (end ? " em: " + end : " (vou passar o endereço)") : "Vou retirar na loja.");
+    if(obs) linhas.push("Obs.: " + obs);
+    window.open("https://wa.me/" + ZAP + "?text=" + encodeURIComponent(linhas.join("\n")), "_blank", "noopener");
+  });
+
+  /* ---------- horários ---------- */
+  (function(){
+    var dias = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], hoje = agoraSP().dia, tb = $("#horario");
+    [1,2,3,4,5,6,0].forEach(function(d){ tb.appendChild(el("tr", d === hoje ? {"class":"hoje"} : null, "<td>" + dias[d] + "</td><td>6h às 22h</td>")); });
+  })();
+
+  /* ---------- início ---------- */
+  carregaFotos();
+  posAgora();
+  relogio.value = valorAgora;
+  renderHora(valorAgora, false);
+  renderComanda();
+  sincroniza(false);
+  setInterval(function(){ var manual = !voltar.hidden; posAgora(); if(!manual){ relogio.value = valorAgora; renderHora(valorAgora, false); } }, 60000);
+})();
+</script>
+</body>
+</html>
